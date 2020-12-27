@@ -9,4 +9,6 @@ date = input("Enter date to use for creating playlist (YYYY-MM-DD): ")
 response = requests.get(url=f'{URL}/data')
 
 print(response.text)
+
+
 #TODO 2: Create spotify playlist
