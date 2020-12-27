@@ -3,12 +3,18 @@ from bs4 import BeautifulSoup
 
 #TODO 1: Scrape billboard top 100 website
 URL = 'https://www.billboard.com/charts/hot-100/'
+date = '2020-12-26'
+# date = input("Enter date to use for creating playlist (YYYY-MM-DD): ")
 
-date = input("Enter date to use for creating playlist (YYYY-MM-DD): ")
+response = requests.get(url=f'{URL}{date}')
 
-response = requests.get(url=f'{URL}/data')
+songs_soup = BeautifulSoup(response.text, "html.parser")
+# print(response.text)
 
-print(response.text)
+songs_data = songs_soup.find_all(name='span', class_="chart-element__information__song")
 
+# songs_data = songs_soup.findAll(name='span', {'class': ["chart-element__information__song", "text--truncate", "color--primary"]})
+
+print(songs_data)
 
 #TODO 2: Create spotify playlist
